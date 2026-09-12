@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "regulaflow"
+version = "0.1.0"
+description = "Multi-agent regulatory intelligence and compliance automation platform"
+requires-python = ">=3.12"
+dependencies = [
+    # Web framework — our API layer
+    "fastapi>=0.115.0",
+    # ASGI server — runs our FastAPI app
+    "uvicorn[standard]>=0.32.0",
+    # Data validation and settings management
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    # Structured logging
+    "structlog>=24.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    # Testing framework
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    # HTTP test client for FastAPI
+    "httpx>=0.27.0",
+    # Linter and code formatter
+    "ruff>=0.7.0",
+    # Type checker
+    "mypy>=1.13.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = false
+ignore_missing_imports = true

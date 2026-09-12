@@ -1,0 +1,45 @@
+# Virtual environment — never commit this (it's huge and machine-specific)
+.venv/
+venv/
+env/
+
+# Python bytecode — auto-generated, not source code
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environment variables — contains real secrets, NEVER commit
+.env
+*.env
+!.env.example
+
+# Distribution / packaging artifacts
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Test and coverage reports
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# IDE files — personal to each developer
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Docker volumes
+postgres-data/
+redis-data/
