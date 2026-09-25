@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 
-from app.api.routes import health
+from app.api.routes import compliance, health
 from app.core.config import get_settings
 from app.core.logging import (
     bind_correlation_id,
@@ -64,6 +64,5 @@ async def correlation_id_middleware(request: Request, call_next):
     return response
 
 
-app.include_router(health.router) # Include the health check router for the application
-# the app doesnt automatically include the health check endpoints; 
-# they must be explicitly added via the router
+app.include_router(health.router)
+app.include_router(compliance.router)
